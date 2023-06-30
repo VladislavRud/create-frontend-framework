@@ -8,3 +8,9 @@ export const init = (selector, component) => {
         patch(app, component.template)
 }
 
+export const createComponent = ({
+    template,
+    methods = {},
+    initialState = {},
+}) => props => template(props)
+
