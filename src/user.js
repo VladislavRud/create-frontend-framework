@@ -1,14 +1,16 @@
+import { createComponent } from "../framework";
 import { div } from "../framework/element";
-import {onClick} from "../framework/event";
-import state from "vuepress/lib/app/store";
-import {createComponent} from "../framework";
-
-const initialState = {firstName: 'Борис', lastName: 'Бритва'}
-export const template = ({ firstName, lastName }) =>
-    div`${onClick(() => alert((firstName)))} Hello ${firstName} ${lastName}`;
+import { onClick } from "../framework/event";
 
 const methods = {
-    changeName : (state, newState) => ({...state, newState})
-}
+    changeName: (state, firstName) => ({ ...state, firstName })
+};
+
+const initialState = { firstName: "Marvin", lastName: "Frachet" };
+
+const template = ({ firstName, lastName, methods }) =>
+    div`${onClick(() =>
+        methods.changeName("Thomas")
+    )} Hello ${firstName} ${lastName}`;
 
 export const User = createComponent({ template, methods, initialState });
